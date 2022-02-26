@@ -1,14 +1,16 @@
+
 const express = require("express");
 const https = require("https");
 const app = express();
 const bodyParser = require("body-parser");
 
+ 
 app.use(bodyParser.urlencoded({extended: true}));
 app.get("/",function(req, res){
-
+ 
 res.sendFile(__dirname +"/index.html");
 })
-
+ 
 app.post("/", function(req,res){
 
   const query = req.body.cityName;
@@ -21,7 +23,7 @@ app.post("/", function(req,res){
     console.log("StatusCode = "+response.statusCode);
 
     response.on("data",function(data){
-
+ 
     const weatheData =  JSON.parse(data);
     const temp = weatheData.main.temp;
     const weatherDescription = weatheData.weather[0].description;
@@ -32,14 +34,14 @@ app.post("/", function(req,res){
     res.write("<h3>The Weather is "+weatherDescription+" .</h3>");
     res.write("<img src=" + iconURL +">");
     res.send();
-
+   
     console.log("Temp = "+temp);
     console.log("WeatherDescription = "+weatherDescription);
     })
   })
-})
+}) 
 
 
-app.listen(process.env.PORT || 5000, function(){
+app.listen(3000, function(){
   console.log("Server is running on port 3000");
 })
