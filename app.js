@@ -1,10 +1,14 @@
 const express = require("express");
+const path = require("path");
 const https = require("https");
 const app = express();
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 
 const PORT = process.env.PORT || 3000;
+// app.use(express.static(path.join(__dirname, "public")));
+//add static directyory
+app.use(express.static(path.join(__dirname, "")));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,34 +37,12 @@ app.post("/", function (req, res) {
       const weatherDescription = weatheData.weather[0].description;
       const icon = weatheData.weather[0].icon;
       const iconURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-      const city = weatheData.name;
-      const country = weatheData.sys.country;
-      const windSpeed = weatheData.wind.speed;
-      const windDeg = weatheData.wind.deg;
-      const humidity = weatheData.main.humidity;
-      const pressure = weatheData.main.pressure;
       weatheData.weather[0].icon = iconURL;
-      // res.write("<h1>Weather Report</h1>");
-      // res.write("<h2>City: "+city+", "+country+"</h2>");
-      // res.write("<h2>Temperature: "+temp+"</h2>");
-      // res.write("<h2>Weather: "+weatherDescription+"</h2>");
-      // res.write("<h2>Wind Speed: "+windSpeed+"</h2>");
-      // res.write("<h2>Wind Direction: "+windDeg+"</h2>");
-      // res.write("<h2>Humidity: "+humidity+"</h2>");
-      // res.write("<h2>Pressure: "+pressure+"</h2>");
-      // res.write("<img src='"+iconURL+"'>");
-      // res.write("<img src=" + iconURL +">");
-      // res.write("<h3>The Weather is "+weatherDescription+" .</h3>");
-      // res.render("result.html",{"weather":weatheData});
-
-      // ejs.renderFile(
-      //   __dirname + "/result.ejs",
-      //   { weather: weatheData },
-      //   function (err, data) {
-      //     res.write(data);
-      //     res.send();
-      //   }
-      // );
+      // const city = weatheData.name;
+      // const country = weatheData.sys.country;
+      // const windSpeed = weatheData.wind.speed;
+      // const humidity = weatheData.main.humidity;
+      // const pressure = weatheData.main.pressure;
 
       res.render("result", { weather: weatheData });
       console.log("Temp = " + temp);
