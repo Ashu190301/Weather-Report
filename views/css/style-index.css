@@ -1,0 +1,24 @@
+body {
+    background-image: url(https://wallpapercave.com/wp/Z4CD0Ic.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container {
+    padding: 100px;
+    padding-top: 200px;
+    width: 100%;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+#center-container {
+    width: 50%;
+    margin: 0 auto;
+    /* border-radius: 25px;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #1e2432;
+    box-shadow: 0px 0px 5px 0px rgba(15, 15, 15, 0.404); */
+}

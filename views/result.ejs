@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Weather-report</title>
+  <link rel="stylesheet" href="/views/css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="main-container">
+      <div class="city">
+        <h2 class="city-name">
+          <span><%= weather.name %></span>
+          <sup><%= weather.sys.country %></sup>
+        </h2>
+        <div class="city-temp">
+          <%= Math.round(weather.main.temp) %>
+          <sup>&deg;C</sup>
+        </div>
+        <div class="info">
+          <img class="city-icon" src="<%= weather.weather[0].icon %>" alt="<%= weather.weather[0].description %>" />
+          <p><%= weather.weather[0].description %></p>
+          <ul>
+            <li>Humidiy: <%= weather.main.humidity %></li>
+            <li>Pressure: <%= weather.main.pressure %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  </div>
+</body>
+
+</html>
